@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Lista de Categorias)
+@section('title', 'Lista de Categorias')
 
 @section('contenido')
 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -8,7 +8,7 @@
     <a href="{{ route('categorias.create') }}" class="btn btn-primary">Nueva</a>
 </div>
 
-@if($productos->count())
+@if($categorias->count())
     <div class="table-responsive">
         <table class="table table-striped align-middle">
             <thead>
@@ -26,8 +26,8 @@
                     <td><a href="{{ route('categorias.show', $c) }}">{{ $c->nombre }}</a></td>
                     <td>{{ $c->descripcion }}</td>
                     <td class="d-flex gap-2">
-                        <a class="btn btn-sm btn-outline-secondary" href="{{ route('categoria.edit', $c) }}">Editar</a>
-                        <form action="{{ route('categoria.destroy', $c) }}" method="POST" onsubmit="return confirm('¿Eliminar Categoria llamada: {{ $c->nombre }}?')">
+                        <a class="btn btn-sm btn-outline-secondary" href="{{ route('categorias.edit', $c) }}">Editar</a>
+                        <form action="{{ route('categorias.destroy', $c) }}" method="POST" onsubmit="return confirm('¿Eliminar Categoria llamada: {{ $c->nombre }}?')">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-sm btn-outline-danger">Eliminar</button>

@@ -14,8 +14,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $caterogias = Categoria::all();
-        return view('categoria.index', compact('categorias'));
+        $categorias = Categoria::all();
+        return view('categorias.index', compact('categorias'));
     }
 
     /**
@@ -64,8 +64,8 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        $categoria = Categorias::findOrFail($id);
-        return view('categorias.edit', compact('categorias'));
+        $categoria = Categoria::findOrFail($id);
+        return view('categorias.edit', compact('categoria'));
     }
 
     /**
@@ -97,7 +97,9 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
+        $categoria = Categoria::findOrFail($id);
         $categoria->delete();
-        return redirect()->route('categorias.index')->with('ok','categoria eliminada');
+
+        return redirect()->route('categorias.index')->with('ok', 'Categoría eliminada');
     }
 }

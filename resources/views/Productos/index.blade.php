@@ -30,7 +30,7 @@
                     <td>${{ number_format($p->precio, 2) }}</td>
                     <td>{{ $p->cantidad }}</td>
                     <td>{{ $p->descripcion }}</td>
-                    <td>{{ $p->categoria }}</td>
+                    <td>{{ $p->categoria->nombre }}</td>
                     <td class="d-flex gap-2">
                         <a class="btn btn-sm btn-outline-secondary" href="{{ route('productos.edit', $p) }}">Editar</a>
                         <form action="{{ route('productos.destroy', $p) }}" method="POST" onsubmit="return confirm('¿Eliminar: {{ $p->nombre }}?')">

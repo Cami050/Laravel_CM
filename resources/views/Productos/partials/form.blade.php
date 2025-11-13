@@ -23,11 +23,11 @@
 </div>
 
 <div class="col-md-6">
-    <label for="cantidad" class="form-label">cantidad</label>
+    <label for="cantidad" class="form-label">Cantidad</label>
     <input 
         type="number" 
         class="form-control" 
-        id="cantidad" 0
+        id="cantidad"
         name="cantidad"
         value="{{ old('cantidad', $producto->cantidad ?? '') }}" 
         min="0"
@@ -42,20 +42,18 @@
         name="descripcion">{{ old('descripcion', $producto->descripcion ?? '') }}</textarea>
 </div>
 
-
-
 <div class="col">
-<label class="form-label">Categoría</label>
-<select name="categoria_id" class="form-select @error('categoria_id') is-invalid
-@enderror" required>
-<option value="">Seleccione categoria...</option>
-@foreach($categorias as $c)
-<option value="{{ $c->id }}" {{ old('categoria id', $producto->categoria_id ?? '')
-$c->id? 'selected': '' }}>
-{{ $c->nombre }}
-</option>
-@endforeach
-</select>
-@error('categoria_id') <div class="invalid-feedback">{{ $message }}</div> @enderror
+    <label class="form-label">Categoría</label>
+    <select name="categoria_id" class="form-select @error('categoria_id') is-invalid @enderror" required>
+        <option value="">Seleccione categoría...</option>
+        @foreach($categorias as $c)
+            <option value="{{ $c->id }}" {{ old('categoria_id', $producto->categoria_id ?? '') == $c->id ? 'selected' : '' }}>
+                {{ $c->nombre }}
+            </option>
+        @endforeach
+    </select>
+    @error('categoria_id') 
+        <div class="invalid-feedback">{{ $message }}</div> 
+    @enderror
 </div>
-</div>
+

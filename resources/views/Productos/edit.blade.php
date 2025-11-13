@@ -9,7 +9,11 @@
     @csrf
     @method('PUT')
 
-    @include('productos.partials.form')
+    {{-- Solo una vez, pasando $categorias --}}
+    @include('productos.partials.form', [
+        'categorias' => $categorias,
+        'producto' => $producto // si el partial lo necesita
+    ])
 
     <div>
         <button class="btn btn-primary">Actualizar</button>

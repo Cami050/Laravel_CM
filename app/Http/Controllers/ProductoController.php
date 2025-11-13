@@ -46,7 +46,7 @@ class ProductoController extends Controller
             'precio'=>['required','numeric','min:0'],
             'cantidad'=>['required','integer','min:0'],
             'descripcion'=>['nullable','string'],
-            'cantidad_id'=>['required','exists:categorias,id'],
+            'categoria_id' => ['required', 'exists:categorias,id'],
         ]);
 
         Producto::create($data);
@@ -73,7 +73,9 @@ class ProductoController extends Controller
     public function edit(string $id)
     {
         $producto = Producto::findOrFail($id);
-        return view('productos.edit', compact('producto'));
+        $categorias = Categoria::orderBy('nombre')->get();
+
+        return view('productos.edit', compact('producto', 'categorias'));
     }
 
 
